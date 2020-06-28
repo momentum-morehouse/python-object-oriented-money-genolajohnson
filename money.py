@@ -78,7 +78,7 @@ def __str__(self):
 
     # self.money = []
     if self.currency.symbol:
-        return f"{self.currency.symbol({self.amount}):.{self.currency.digits}f}"
+            return f"{self.currency.symbol({self.amount}):.{self.currency.digits}f}"
         else:
             return f"{self.currency.code}{self.amount:.{self.currency.digits}f}" 
                 
@@ -102,12 +102,26 @@ def __str__(self):
         currencies, raise a DifferentCurrencyError.
         """
         pass
+        if self.currency == other.currency:
+            new_amount = self.amount + other.amount
+            currency = self.currency 
+            sum = Money(new_amount.currency)
+        return sum
+            else
+        return raiseDifferentCurrencyError 
 
     def sub(self, other):
         """
         Subtract two money objects of the same currency. If they have different
         currencies, raise a DifferentCurrencyError.
         """
+        if self.currency == other.currency:
+            new_amount = self.amount - other.amount
+            currency = self.currency
+            difference = Money(new_amount.currency)
+        return difference
+            else
+        return raiseDifferentCurrencyError
         pass
 
     def mul(self, multiplier):
@@ -115,9 +129,17 @@ def __str__(self):
         Multiply a money object by a number to get a new money object.
         """
         pass
+            new_amount = self.amount * other.amount
+            currency = self.currency 
+            product = Money(new_amount.currency)
+        return product
 
     def div(self, divisor):
         """
         Divide a money object by a number to get a new money object.
         """
         pass
+            new_amount = self.amount / other.amount
+            currency = self.currency 
+            quotient = Money(new_amount.currency)
+        return quotient
